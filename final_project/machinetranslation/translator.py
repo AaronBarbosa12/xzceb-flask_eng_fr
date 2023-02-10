@@ -18,15 +18,22 @@ language_translator.set_service_url(url)
 
 def english_to_french(english_text):
     model_id = "en-fr"
-    french_text = language_translator.translate(
-        text=english_text, model_id=model_id
-    ).get_result()["translations"][0]["translation"]
-    return french_text
 
+    if english_text is not None:
+        french_text = language_translator.translate(
+            text=english_text, model_id=model_id
+        ).get_result()["translations"][0]["translation"]
+        return french_text
+    else:
+        return None 
 
 def french_to_english(french_text):
     model_id = "fr-en"
-    english_text = language_translator.translate(
-        text=french_text, model_id=model_id
-    ).get_result()["translations"][0]["translation"]
-    return english_text
+
+    if french_text is not None:        
+        english_text = language_translator.translate(
+            text=french_text, model_id=model_id
+        ).get_result()["translations"][0]["translation"]
+        return english_text
+    else:
+        return None
